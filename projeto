@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Imersão Alura</title>
+</head>
+<body>
+    <header>
+        <h1>
+            Imersão Dev Com Alura e Gemini Iniciando o Projeto.
+        </h1>
+    </header>
+    <main>
+        <section>
+            <input id="aluna-nome" type="text" placeholder="Digite o nome da Aluna">
+            <button id="pesquisar">Pesquisar</button>
+        </section>
+        <section id="resultado" class="resultado-de-pesquisa">
+            <!-- O resultado da pesquisa será inserido aqui -->
+        </section>
+    </main>
+    <footer class="final">
+        <p>Imersão Dev Com Alura e Gemini 2024. Em Busca Do Certificado.</p>
+        <p>Entre Em Contato Pelo Email: bispoelima@gmail.com.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
+
+- css-
+
+body {
+    font-family: "Chakra Petch", sans-serif;
+    background-color: rgb(216, 226, 224); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 35vh;
+    font-size: 2.5rem;
+    color: #2056a8;
+    text-align: center;
+    letter-spacing: 0.4rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem;
+    max-width: 800px;
+}
+
+section button {
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #268bf0;
+    color: #f5f7f8;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input {
+    padding: 10px;
+    border-radius: 15px;
+    margin: 5px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #d40c38;
+}
+
+.resultado-de-pesquisa {
+    font-size: 1.5rem;
+    color: #135ddd;  
+}
+
+.apresentação {
+    text-decoration: none;
+    color: #1846dd;
+    background-color: rgb(177, 237, 209);
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #592bb6;
+    font-size: 1.2rem;
+    margin: 10px;
+    padding: 5px;
+}
+
+.link:hover {
+    color: #d40c38;
+    text-decoration: underline;
+}
+
+.final {
+    font-size: 1.2rem;
+    color: #5420d8;
+    padding-bottom: 90px;
+}
+
+-javascript-
+
+// Simulação de dados da aluna
+let dados = {
+    titulo: 'Rosa Maria De Lima Bispo',
+    apresentação: 'Olá, meu nome é Rosa Maria, sou estudante de Desenvolvimento Full Stack na faculdade EAD Unicid de São Paulo, atualmente cursando o 2º semestre com previsão de conclusão em dezembro de 2025. Tenho grande interesse em expandir meu conhecimento na área de tecnologia, e, para isso, realizo diversos cursos complementares em plataformas renomadas, como Alura, IBM, Dio e YouTube. Estou em busca de uma oportunidade de estágio home office para aplicar e aprimorar os conhecimentos que venho adquirindo tanto na faculdade quanto nesses cursos extracurriculares. Acredito que uma vaga de estágio seria o próximo passo ideal para meu desenvolvimento profissional e para contribuir ativamente em projetos práticos no mundo da tecnologia.',
+    github: 'https://github.com/rosa1204',
+    linkedin: 'https://linkedin.com/in/rosa-maria-bispo-56699b26a'
+};
+
+// Captura o botão e o campo de texto
+let botaoPesquisar = document.getElementById("pesquisar");
+let inputNome = document.getElementById("aluna-nome");
+let resultadoSection = document.getElementById("resultado");
+
+// Adiciona evento ao botão de pesquisa
+botaoPesquisar.addEventListener("click", function() {
+    // Captura o valor do campo de texto
+    let nome = inputNome.value.trim().toLowerCase();
+    
+    // Verifica se o nome digitado corresponde ao nome da aluna
+    if (nome === "rosa maria" || nome === "rosa maria de lima bispo") {
+        // Exibe a apresentação da aluna
+        resultadoSection.innerHTML = `
+            <section class="resultado-de-pesquisa">
+                <h2>
+                    <a href="#" target="_blank">${dados.titulo}</a>
+                </h2>
+                <p class="apresentação">${dados.apresentação}</p>
+                <a class="link" href="${dados.github}" target="_blank">Github</a>
+                <a class="link" href="${dados.linkedin}" target="_blank">Linkedin</a>
+            </section>
+        `;
+    } else {
+        // Caso o nome não seja encontrado
+        resultadoSection.innerHTML = `<p>Aluna não encontrada.</p>`;
+    }
+});
